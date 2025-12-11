@@ -16,9 +16,25 @@ class MonteCarlo:
     """
     Monte Carlo Tree Search with UCT (Upper Confidence bound for Trees).
     This is the AI brain that uses random simulations to find the best move.
+    
+    The algorithm proceeds in four phases:
+    1. Selection: Traverse the tree to find a leaf node using UCT.
+    2. Expansion: Add a new child node to the tree.
+    3. Simulation: Perform a random rollout from the new node to a terminal state.
+    4. Backpropagation: Update the stats (wins/plays) back up the tree.
     """
     
     def __init__(self, board, **kwargs):
+        """
+        Initialize the MCTS engine.
+        
+        Args:
+            board: The game board object (must implement start, current_player, next_state, legal_plays, winner).
+            **kwargs: Configuration options:
+                - time (int): Max calculation time in seconds (default: 2).
+                - max_moves (int): Max depth for simulations (default: 9).
+                - C (float): Exploration constant for UCT (default: 1.4).
+        """
         self.board = board
         self.states = []
         
@@ -27,7 +43,8 @@ class MonteCarlo:
         self.max_moves = kwargs.get('max_moves', 9)
         
         # The exploration constant (C in UCT formula)
-        # Higher = more exploration, Lower = more exploitation
+        # Higher = more exploration (trying new moves)
+        # Lower = more exploitation (sticking to known good moves)
         self.C = kwargs.get('C', 1.4)
         
         # Statistics tables
@@ -38,14 +55,21 @@ class MonteCarlo:
         self.max_depth = 0
         self.last_stats = {}
     
-    def update(self, state):
-        """Appends the state to the game history."""
+    def update(self, state: tuple):
+        """
+        Appends the state to the game history.
+        
+        Args:
+            state (tuple): The new game state to append.
+        """
         self.states.append(state)
     
-    def get_play(self):
+    def get_play(self) -> tuple:
         """
         Calculates the best move from the current game state.
-        Returns the move and statistics for insights.
+        
+        Returns:
+            tuple: (best_move_index, statistics_dict)
         """
         self.max_depth = 0
         state = self.states[-1]

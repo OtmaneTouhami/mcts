@@ -15,8 +15,18 @@ from mcts import MonteCarlo
 # GAME INTERFACE - Human vs AI
 # =============================================================================
 
-def display_ai_insights(stats):
-    """Display detailed AI decision insights."""
+def display_ai_insights(stats: dict):
+    """
+    Display detailed AI decision insights.
+    
+    Args:
+        stats (dict): A dictionary containing MCTS statistics:
+            - time: Calculation time string
+            - simulations: Total simulations run
+            - max_depth: Max tree depth reached
+            - exploration_constant: C value used
+            - move_analysis: List of dicts with stats for each move
+    """
     print("\n" + "="*60)
     print("🤖 AI DECISION INSIGHTS")
     print("="*60)
@@ -50,8 +60,17 @@ def display_ai_insights(stats):
     print("="*60 + "\n")
 
 
-def get_human_move(board, states):
-    """Get a valid move from the human player."""
+def get_human_move(board, states: list) -> int:
+    """
+    Get a valid move from the human player.
+    
+    Args:
+        board: The game board object.
+        states (list): The history of game states.
+        
+    Returns:
+        int: The chosen move index (0-8).
+    """
     legal = board.legal_plays(states)
     
     print("Your turn! Enter your move.")
@@ -80,8 +99,13 @@ def get_human_move(board, states):
             print("❌ Invalid input! Please enter row and column (0-2).")
 
 
-def select_difficulty():
-    """Let the user select AI difficulty level."""
+def select_difficulty() -> tuple:
+    """
+    Let the user select AI difficulty level.
+    
+    Returns:
+        tuple: (difficulty_name, thinking_time, exploration_constant)
+    """
     # Difficulty settings: (time in seconds, C exploration constant)
     difficulties = {
         '1': ('Easy',   1,  1.5),   # Short thinking, less exploration
@@ -100,7 +124,7 @@ def select_difficulty():
             name, time_val, c_val = difficulties[choice]
             print(f"\n✅ Difficulty set to: {name}")
             return name, time_val, c_val
-        print("Please enter 1, 2, or 3.")
+        print("❌ Invalid choice. Please enter 1, 2, or 3.")
 
 
 def play_game():
