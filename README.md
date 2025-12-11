@@ -51,11 +51,15 @@ python3 src/main.py
 ## 🎯 How to Play
 
 1. Run the game with `python3 src/main.py`
-2. Choose who starts:
+2. Select difficulty level:
+   - **😊 Easy** - AI thinks 1s (beatable)
+   - **🤔 Medium** - AI thinks 3s (challenging)
+   - **💀 Hard** - AI thinks 6s (nearly unbeatable)
+3. Choose who starts:
    - **Option 1**: Human plays first (as X)
    - **Option 2**: AI plays first (as X)
-3. Enter moves as row and column: `1 1` or `1,1`
-4. Watch the AI's decision insights after each move!
+4. Enter moves as row and column: `1 1` or `1,1`
+5. Watch the AI's decision insights after each move!
 
 ### Example Gameplay
 
@@ -129,17 +133,23 @@ MCTS/
 
 ## ⚙️ Configuration
 
-You can modify AI behavior in `src/main.py`:
+### Difficulty Levels
 
-```python
-ai = MonteCarlo(board, time=2, C=1.4)
-```
+The game includes 3 pre-configured difficulty levels:
 
-| Parameter   | Default | Description                                     |
-| ----------- | ------- | ----------------------------------------------- |
-| `time`      | 2       | Thinking time in seconds per move               |
-| `C`         | 1.4     | Exploration constant. Higher = more exploration |
-| `max_moves` | 9       | Maximum moves per simulation                    |
+| Difficulty | Thinking Time | Exploration (C) | Description                          |
+| ---------- | ------------- | --------------- | ------------------------------------ |
+| 😊 Easy    | 0.5s          | 0.8             | Beatable - fewer simulations         |
+| 🤔 Medium  | 1.5s          | 1.4             | Challenging - balanced               |
+| 💀 Hard    | 3.0s          | 1.8             | Nearly unbeatable - many simulations |
+
+### Parameters Explained
+
+| Parameter   | Description                                     |
+| ----------- | ----------------------------------------------- |
+| `time`      | Thinking time in seconds per move               |
+| `C`         | Exploration constant. Higher = more exploration |
+| `max_moves` | Maximum moves per simulation (default: 9)       |
 
 ---
 
