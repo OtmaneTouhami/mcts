@@ -80,6 +80,29 @@ def get_human_move(board, states):
             print("❌ Invalid input! Please enter row and column (0-2).")
 
 
+def select_difficulty():
+    """Let the user select AI difficulty level."""
+    # Difficulty settings: (time in seconds, C exploration constant)
+    difficulties = {
+        '1': ('Easy',   0.5,  0.8),   # Short thinking, less exploration
+        '2': ('Medium', 1.5,  1.4),   # Balanced
+        '3': ('Hard',   3.0,  1.8),   # Long thinking, more exploration = unbeatable
+    }
+    
+    print("\n🎯 SELECT DIFFICULTY:")
+    print("   1. 😊 Easy   - AI thinks 0.5s (beatable)")
+    print("   2. 🤔 Medium - AI thinks 1.5s (challenging)")
+    print("   3. 💀 Hard   - AI thinks 3.0s (nearly unbeatable)")
+    
+    while True:
+        choice = input("Enter 1, 2, or 3: ").strip()
+        if choice in difficulties:
+            name, time_val, c_val = difficulties[choice]
+            print(f"\n✅ Difficulty set to: {name}")
+            return name, time_val, c_val
+        print("Please enter 1, 2, or 3.")
+
+
 def play_game():
     """Main game loop."""
     print("\n" + "="*60)
@@ -89,11 +112,15 @@ def play_game():
     
     # Initialize
     board = TicTacToeBoard()
+
+    # Select difficulty
+    difficulty_name, thinking_time, exploration_constant = select_difficulty()
     
     # Configuration
     print("\n⚙️  AI Configuration:")
-    print("   - Thinking time: 2 seconds per move")
-    print("   - Exploration constant (C): 1.4")
+    print(f"   - Difficulty: {difficulty_name}")
+    print(f"   - Thinking time: {thinking_time} seconds per move")
+    print(f"   - Exploration constant (C): {exploration_constant}")
     
     # Choose who starts
     print("\n🎮 Who should start?")
@@ -113,8 +140,8 @@ def play_game():
     print(f"\n✅ You are playing as: {player_symbols[human_player]}")
     print(f"   AI is playing as: {player_symbols[ai_player]}")
     
-    # Create AI
-    ai = MonteCarlo(board, time=2, C=1.4)
+    # Create AI with selected difficulty
+    ai = MonteCarlo(board, time=thinking_time, C=exploration_constant)
     
     # Initialize game state
     state = board.start()
