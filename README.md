@@ -52,9 +52,9 @@ python3 src/main.py
 
 1. Run the game with `python3 src/main.py`
 2. Select difficulty level:
-   - **😊 Easy** - AI thinks 0.5s (beatable)
-   - **🤔 Medium** - AI thinks 1.5s (challenging)
-   - **💀 Hard** - AI thinks 3.0s (nearly unbeatable)
+   - **😊 Easy** - AI thinks 1s (beatable)
+   - **🤔 Medium** - AI thinks 3s (challenging)
+   - **💀 Hard** - AI thinks 6s (nearly unbeatable)
 3. Choose who starts:
    - **Option 1**: Human plays first (as X)
    - **Option 2**: AI plays first (as X)

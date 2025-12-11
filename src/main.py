@@ -84,15 +84,15 @@ def select_difficulty():
     """Let the user select AI difficulty level."""
     # Difficulty settings: (time in seconds, C exploration constant)
     difficulties = {
-        '1': ('Easy',   0.5,  0.8),   # Short thinking, less exploration
-        '2': ('Medium', 1.5,  1.4),   # Balanced
-        '3': ('Hard',   3.0,  1.8),   # Long thinking, more exploration = unbeatable
+        '1': ('Easy',   1,  1.5),   # Short thinking, less exploration
+        '2': ('Medium', 3,  2.5),   # Balanced
+        '3': ('Hard',   6,  3.5),   # Long thinking, more exploration = unbeatable
     }
     
     print("\n🎯 SELECT DIFFICULTY:")
-    print("   1. 😊 Easy   - AI thinks 0.5s (beatable)")
-    print("   2. 🤔 Medium - AI thinks 1.5s (challenging)")
-    print("   3. 💀 Hard   - AI thinks 3.0s (nearly unbeatable)")
+    print("   1. 😊 Easy   - AI thinks 1s (beatable)")
+    print("   2. 🤔 Medium - AI thinks 3s (challenging)")
+    print("   3. 💀 Hard   - AI thinks 6s (nearly unbeatable)")
     
     while True:
         choice = input("Enter 1, 2, or 3: ").strip()
