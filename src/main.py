@@ -114,7 +114,7 @@ def play_game():
     print(f"   AI is playing as: {player_symbols[ai_player]}")
     
     # Create AI
-    ai = MonteCarlo(board, time=2, C=1.4)
+    ai = MonteCarlo(board, time=5, C=2.5)
     
     # Initialize game state
     state = board.start()
