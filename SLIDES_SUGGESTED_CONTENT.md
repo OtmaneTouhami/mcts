@@ -21,10 +21,10 @@
 - **Title:** The Journey
 - **Content:**
     1.  **The Problem:** Why classic AI fails at Go. (Clown N°1)
-    2.  **The Logic:** The 4-Step Cycle. (Clown N°2)
-    3.  **The Brain:** The Math of Exploration vs. Exploitation. (Clown N°3)
-    4.  **The Code:** Python Implementation. (Clown N°4)
-    5.  **The Reality:** Live Demo & AlphaGo. (Clown N°5)
+    2.  **The Idea:** The core idea behind the Monte Carlo Simulation (Clown N°2)
+    3.  **The Logic:** The 4-Step Cycle. (Clown N°3)
+    4.  **The Brain:** The Math of Exploration vs. Exploitation. (Clown N°4)
+    5.  **The Code and Reality:** Python Implementation, Live Demo & AlphaGo. (Clown N°5)
 - **Visuals:** A simple timeline or 5 icons representing each section.
 
 ---

@@ -114,6 +114,10 @@ MCTS/
 │   ├── board.py          # TicTacToeBoard class (game rules)
 │   ├── mcts.py           # MonteCarlo class (MCTS/UCT algorithm)
 │   └── main.py           # Game interface & entry point
+├── simulation/
+│   ├── generate_csv.py   # Script to generate sample data
+│   ├── main.ipynb        # Monte Carlo simulation demo notebook
+│   └── people_1M.csv     # Sample dataset (1M records)
 ├── PLAN.md               # Presentation planning document
 ├── SELF_STUDY_GUIDE.md   # Learning resources for MCTS
 ├── SLIDES_SUGGESTED_CONTENT.md  # Slide content suggestions
@@ -128,6 +132,7 @@ MCTS/
 | `src/board.py` | Encapsulates Tic-Tac-Toe rules. Implements the game interface that MCTS uses. |
 | `src/mcts.py`  | Game-agnostic MCTS engine. Contains the UCT algorithm and simulation logic.   |
 | `src/main.py`  | Human vs AI game loop with move input and insight display.                    |
+| `simulation/`  | Monte Carlo estimation demo with random sampling on a 1M row dataset.         |
 
 ---
 
@@ -139,9 +144,9 @@ The game includes 3 pre-configured difficulty levels:
 
 | Difficulty | Thinking Time | Exploration (C) | Description                          |
 | ---------- | ------------- | --------------- | ------------------------------------ |
-| 😊 Easy    | 0.5s          | 0.8             | Beatable - fewer simulations         |
-| 🤔 Medium  | 1.5s          | 1.4             | Challenging - balanced               |
-| 💀 Hard    | 3.0s          | 1.8             | Nearly unbeatable - many simulations |
+| 😊 Easy    | 1s            | 1.5             | Beatable - fewer simulations         |
+| 🤔 Medium  | 3s            | 2.5             | Challenging - balanced               |
+| 💀 Hard    | 6s            | 3.5             | Nearly unbeatable - many simulations |
 
 ### Parameters Explained
 
